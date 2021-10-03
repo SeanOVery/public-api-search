@@ -42,3 +42,29 @@ h6 {
   justify-content: center;
   align-items: center;
 }
+
+#results {
+  background-color: black;
+  color: white;
+  width: 800px;
+  height: 400px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+#api-type {
+  background-color: black;
+  color: white;
+  width: 400px;
+  height: 400px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
