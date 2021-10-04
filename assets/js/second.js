@@ -1,6 +1,8 @@
 const apiTypeFromForm = document.querySelector('#api-type'),
   results = document.querySelector('#results')
 
+let artInstituteUrl = 'https://api.artic.edu/api/v1/artworks/search?q=cats'
+
 const getResults = () => {
   let queryStr = document.location.search.split('&'),
     apiType = queryStr[0].split('0')[1]
@@ -11,3 +13,15 @@ const getResults = () => {
 }
 
 getResults()
+
+function getInfo() {
+  fetch(artInstituteUrl)
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+      console.log(data)
+    })
+}
+
+getInfo()
