@@ -2,26 +2,39 @@ const formEl = document.querySelector('.search-form'),
   apiTypeSearch = document.querySelector('.text'),
   apiSelect = document.querySelector('#api-select-dropdown'),
   apiTypeSelect = document.querySelector('.api-type-select'),
-  artArr = ['Art Institute of Chicago', 'Colour Lovers', 'Icon Horse', 'Metropolitan Museum of Art', 'PHP-Noise', 'Pixel Encounter'],
-  artArrShort = ['artchicago', 'colourovers','iconhorse','metart', 'phpnoise','pixelencounter']
+  recentSearchEl = document.querySelector('#recent-search-dropdown'),
+  artArr = ['Art Institute of Chicago', 'Colour Lovers', 'Metropolitan Museum of Art', 'Pixel Encounter'],
+  artArrShort = ['artchicago', 'colourovers','metart','pixelencounter'],
+  bookArr = ['British National Bibliography', 'Library of Congress', 'Open Library', 'Penguin Publishing'],
+  bookArrShort = ['britNatBiblio','libOfCongress', 'openLibrary', 'penguinPublish'],
+  foodDrinkArr = ['Foodish', 'Open Brewery', 'Open Food Facts', 'Coffee'],
+  foodDrinkArrShort = ['foodish', 'openBrew', 'openFoodFacts','coffee']
 
 let redirectURL = `./secondpage.html?`,
   arr,
-  arrShort
+  arrShort,
+  recentSearchArr = []
 
 
-$('.ui.dropdown')
-  .dropdown()
-;
+const init = () => {
+  let storedRecents = JSON.parse(localStorage.getItem('recents'))
 
+    if (storedRecents !== null) {
+      recentSearchArr = storedRecents
+    }
+  createRecentSearchLinks()
+}
 
 formEl.addEventListener('submit', (ev) => {
   ev.preventDefault()
   let apiType = apiTypeSearch.innerText,
-    apiSelection = apiSelect.value
+    apiSelection = apiSelect.value,
+    recentSearchSubArray = [apiType, apiSelection, apiSelect.nextSibling.nextSibling.textContent]
+    recentSearchArr.push(recentSearchSubArray)
+    localStorage.setItem('recents', JSON.stringify(recentSearchArr))
   location.href = redirectURL + `apitype=${apiType}&apiselection=${apiSelection}`
+  
 })
-
 function setDropdown(event) {
   let target = event.target,
     val
@@ -33,6 +46,18 @@ function setDropdown(event) {
       arr = artArr
       arrShort = artArrShort
       dropdownCreation()
+  }
+
+  if (val === 'Books') {
+    arr = bookArr
+    arrShort = bookArrShort
+    dropdownCreation()
+  }
+
+  if (val ==='Food&Drink') {
+    arr = foodDrinkArr
+    arrShort = foodDrinkArrShort
+    dropdownCreation()
   }
 }
 
@@ -48,6 +73,24 @@ function dropdownCreation() {
     apiSelect.append(newOption)
 
   }
+
+}
+
+const createRecentSearchLinks = () => {
+  for (let i = 0; i < recentSearchArr.length; i++) {
+    let newA = document.createElement('a')
+    newA.classList.add('item')
+    newA.textContent = recentSearchArr[i][2]
+    newA.href = redirectURL + `apitype=${recentSearchArr[i][0]}&apiselection=${recentSearchArr[i][1]}`
+    recentSearchEl.append(newA)
+  }
 }
 
 apiTypeSelect.addEventListener('click', setDropdown)
+
+
+$('.ui.dropdown')
+  .dropdown()
+;
+
+init()
