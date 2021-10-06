@@ -30,11 +30,19 @@ formEl.addEventListener('submit', (ev) => {
   let apiType = apiTypeSearch.innerText,
     apiSelection = apiSelect.value,
     recentSearchSubArray = [apiType, apiSelection, apiSelect.nextSibling.nextSibling.textContent]
-    recentSearchArr.push(recentSearchSubArray)
+    if (recentSearchArr.length >= 10) {
+      recentSearchArr.shift()
+      recentSearchArr.push(recentSearchSubArray)
+    } else {
+      recentSearchArr.push(recentSearchSubArray)
+    }
     localStorage.setItem('recents', JSON.stringify(recentSearchArr))
   location.href = redirectURL + `apitype=${apiType}&apiselection=${apiSelection}`
   
 })
+
+
+
 function setDropdown(event) {
   let target = event.target,
     val
