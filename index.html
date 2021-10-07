@@ -11,9 +11,9 @@
 </head>
 
 <body>
-  <header>
-    <div class="ui fixed inverted menu">
-      <div class="ui container">
+  <header class="custom-nav">
+    <nav class="ui fixed inverted menu">
+      <div class="ui container custom-nav" >
         <a href="#" class="header item">
           API Search
         </a>
@@ -24,11 +24,12 @@
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   </header>
   <main>
-    <div class="search-container">
-      <h1>Search Container</h1>
+    <!--Search Container-->
+    <section class="search-container">
+      <h1>Public API Search</h1>
       <form class="search-form" action="./secondpage.html">
       <div class="main-search-container">  
         <div class="ui floating dropdown labeled icon button">
@@ -63,9 +64,9 @@
         <select class="ui dropdown" id="api-select-dropdown">
         </select>
       </div>
-        <button type="submit" class="positive ui button">Search</button>
+        <button type="submit" class="positive ui button custom-search-btn">Submit</button>
       </form>
-    </div>
+    </section>
   </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
