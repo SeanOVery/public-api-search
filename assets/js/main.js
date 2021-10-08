@@ -6,8 +6,8 @@ const formEl = document.querySelector('.search-form'),
   hiddenDropdownEl = document.querySelector('#hidden-dropdown'),
   artArr = ['Art Institute of Chicago', 'Colour Lovers', 'Metropolitan Museum of Art', 'Pixel Encounter'],
   artArrShort = ['artchicago', 'colourovers','metart','pixelencounter'],
-  bookArr = ['British National Bibliography', 'Library of Congress', 'Open Library', 'Poemist'],
-  bookArrShort = ['britNatBiblio','libOfCongress', 'openLibrary', 'poemist'],
+  bookArr = ['New York Times Books', 'Library of Congress', 'Open Library', 'Poemist'],
+  bookArrShort = ['nytBooks','libOfCongress', 'openLibrary', 'poemist'],
   foodDrinkArr = ['Foodish', 'Open Brewery', 'Open Food Facts', 'Coffee'],
   foodDrinkArrShort = ['foodish', 'openBrew', 'openFoodFacts','coffee']
 

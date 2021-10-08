@@ -32,7 +32,74 @@ const createRecentSearchLinks = () => {
 const booksApiFunc = () => {
   let callUrl = ''
 
-  if (apiToFetch === 'britNatBiblio') {
+  if (apiToFetch === 'nytBooks') {
+    callUrl = 'https://api.nytimes.com/svc/books/v3/reviews.json?author=Stephen+King&api-key=Sqt8pojApVeCMUYS08uRPxR68Fn4xtGA'
+    fetch(callUrl)
+    .then(response => {
+      if (response.status === 200) {
+      return response.json()
+      } else if (response.status === 500) {
+        throw new Error('500 Internal Server Error')
+      }
+    })
+      .then(data => {
+        console.log(data)
+        searchData = data
+      apiCall.innerHTML = `   
+        <h1>Example Api Call</h1>   
+        <div class="ui grid">
+        <div class="sixteen wide column">
+        <table class="ui attached inverted table center aligned">
+          <thead>
+            <th>${searchData.results[0].book_title} by ${searchData.results[0].book_author}</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Link to NYT review: <a target="_blank" href="${searchData.results[0].url}">${searchData.results[0].book_title} review by ${searchData.results[0].byline}</a></td>
+            </tr>
+            <tr>
+              <td>Summary: ${searchData.results[0].summary}</td>
+            </tr>
+              <td>Review's Date of Publication: ${searchData.results[0].publication_dt}</td>
+          </tbody>
+        </table> 
+        </div>
+        </div>`
+     
+      results.innerHTML = `<div class="ui top attached inverted segment center aligned">
+        Types of Information you can gather from the library of congress
+      </div>
+      <table class="ui attached inverted table center aligned">
+        <thead>
+          <th>New York Times Book Review Search</th>
+          <th>New York Times Top lists Search</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Search For book reviews by Author, Book Title, or ISBN</td>
+            <td>Search for NYT top seller lists</td>
+          </tr>
+          <tr>
+            <td>Whichever search query you use the other two are returned in the response</td>
+            <td>Publication date, Author name, Title</td>
+          </tr>
+          <tr>
+            <td>A 1 sentence summary is returned</td>
+            <td>Rank on best sellers list</td>
+          </tr>
+          <tr>
+            <td>A link to the full review</td>
+            <td>A link to purchase the book on amazon</td>
+          </tr>
+        </tbody>
+      </table>`
+      })
+      .catch(error => {
+        errorDialogEl.innerHTML = `<p>${error}</p>`
+        $('.ui.basic.modal')
+        .modal('show')
+        ;
+      })
 
   } else if (apiToFetch === 'libOfCongress') {
     callUrl = 'https://www.loc.gov/search/?q=baseball&fo=json'
