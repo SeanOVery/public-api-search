@@ -53,20 +53,60 @@ const booksApiFunc = () => {
       .then(data => {
         console.log(data)
         searchData = data
-        apiCall.innerHTML = `<h3>${searchData.docs[0].title}</h3>
-        <ul>
-        <li>Author: ${searchData.docs[0].author_name}
-        <li>First Year Published: ${searchData.docs[0].first_publish_year}</li>
-        <li>How Many Editions Exist: ${searchData.docs[0].edition_count}</li>
-        <li>Some Characters: ${searchData.docs[0].person[Math.floor(Math.random() * (searchData.docs[0].person.length))]}, ${searchData.docs[0].person[Math.floor(Math.random() * (searchData.docs[0].person.length))]}, ${searchData.docs[0].person[Math.floor(Math.random() * (searchData.docs[0].person.length))]}</li>
-        </ul>`
-        results.innerHTML = `<h4>Open Library can give you useful information such as the following</h4>
-        <ol>
-        <li>The Author of a work</li>
-        <li>The first year that work was published</li>
-        <li>How many editions of that work exists</li>
-        <li>Characters in the work</li>
-        </ol>`
+      apiCall.innerHTML = `   
+        <h1>Example Api Call</h1>   
+        <div class="ui grid">
+        <div class="four wide column left floated">
+          <img src="http://covers.openlibrary.org/b/isbn/${searchData.docs[0].isbn[0]}-M.jpg">
+        </div>
+        <div class="nine wide column">
+        <table class="ui attached inverted table center aligned">
+          <thead>
+            <th>${searchData.docs[0].title}</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Author: ${searchData.docs[0].author_name}</td>
+            </tr>
+            <tr>
+              <td>First Year Published: ${searchData.docs[0].first_publish_year}</td>
+            </tr>
+              <td>How Many Editions Exist: ${searchData.docs[0].edition_count}</td>
+            <tr>
+              <td>Some Characters: ${searchData.docs[0].person[Math.floor(Math.random() * (searchData.docs[0].person.length))]}, ${searchData.docs[0].person[Math.floor(Math.random() * (searchData.docs[0].person.length))]}, ${searchData.docs[0].person[Math.floor(Math.random() * (searchData.docs[0].person.length))]}</td>
+            </tr>
+          </tbody>
+        </table> 
+        </div>
+        </div>`
+     
+      results.innerHTML = `<div class="ui top attached inverted segment center aligned">
+        Types of Information you can gather from open library
+      </div>
+      <table class="ui attached inverted table center aligned">
+        <thead>
+          <th>Open Library(Search by name of the book)</th>
+          <th>Open Library Covers(Search by ISBN)</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Year a book was published</td>
+            <td>Three options for sizes</td>
+          </tr>
+          <tr>
+            <td>Author of the book</td>
+            <td>Small-Thumbnail sized</td>
+          </tr>
+          <tr>
+            <td>Year a book was published</td>
+            <td>Medium-Decent size for a small container on a website</td>
+          </tr>
+          <tr>
+            <td>Characters in the book</td>
+            <td>Large-Full size image of cover</td>
+          </tr>
+        </tbody>
+      </table>`
       })
 
   } else {
@@ -88,12 +128,3 @@ const checkApiType = () => {
 
 init()
 
-// fetch('https://api.artic.edu/api/v1/artworks/129884')
-//   .then(response => {
-//     return response.json()
-//   })
-//   .then(data => {
-//     console.log(data)
-//     console.log(data.data.date_display)
-//     apiCall.innerHTML = `<h4>${data.data.date_display}</h4>`
-//   })
