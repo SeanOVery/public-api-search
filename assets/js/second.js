@@ -41,7 +41,7 @@ const booksApiFunc = () => {
       if (response.status === 200) {
       return response.json()
       } else if (response.status === 500) {
-        throw new Error('Server Error: 500')
+        throw new Error('500 Internal Server Error')
       }
     })
       .then(data => {
@@ -99,11 +99,10 @@ const booksApiFunc = () => {
       </table>`
       })
       .catch(error => {
-        errorDialogEl.textContent = error
-        $('#dialog').dialog({
-          height: 100,
-          width: 200,
-        })
+        errorDialogEl.innerHTML = `<p>${error}</p>`
+        $('.ui.basic.modal')
+        .modal('show')
+        ;
       })
 
 
@@ -114,7 +113,7 @@ const booksApiFunc = () => {
         if (response.status === 200) {
         return response.json()
         } else if (response.status === 500) {
-          throw new Error('Server Error: 500')
+          throw new Error('500 Internal Server Error')
         }
       })
       .then(data => {
@@ -125,7 +124,7 @@ const booksApiFunc = () => {
         <div class="four wide column left floated">
           <img src="http://covers.openlibrary.org/b/isbn/${searchData.docs[0].isbn[0]}-M.jpg">
         </div>
-        <div class="nine wide column">
+        <div class="ten wide column">
         <table class="ui attached inverted table center aligned">
           <thead>
             <th>${searchData.docs[0].title}</th>
@@ -164,7 +163,7 @@ const booksApiFunc = () => {
             <td>Small-Thumbnail sized</td>
           </tr>
           <tr>
-            <td>Year a book was published</td>
+            <td>How many editions of the book exist</td>
             <td>Medium-Decent size for a small container on a website</td>
           </tr>
           <tr>
@@ -175,15 +174,86 @@ const booksApiFunc = () => {
       </table>`
       })
       .catch(error => {
-        errorDialogEl.textContent = error
-        $('#dialog').dialog({
-          height: 100,
-          width: 200,
-        })
+        errorDialogEl.innerHTML = `<p>${error}</p>`
+        $('.ui.basic.modal')
+        .modal('show')
+        ;
       })
 
-  } else {
-
+  } else if (apiToFetch === 'poemist'){
+    callUrl = 'https://www.poemist.com/api/v1/randompoems'
+    fetch(callUrl)
+      .then(response => {
+        if (response.status === 200) {
+        return response.json()
+        } else if (response.status === 500) {
+          throw new Error('500 Internal Server Error')
+        }
+      })
+      .then(data => {
+        searchData = data
+      apiCall.innerHTML = `
+      <h1>Example Api Call</h1>  
+      <div style="width: 60vw;">
+      <div class="ui inverted segment">
+        <div class="ui inverted accordion">
+          <div class="active title">
+          <i class="dropdown icon"></i>
+            ${searchData[0].title} by ${searchData[0].poet.name}
+          </div>
+        <div class="active content">
+          <p>${searchData[0].content}</p>
+        </div>
+        <div class="title">
+          <i class="dropdown icon"></i>
+            ${searchData[1].title} by ${searchData[1].poet.name}
+        </div>
+        <div class="content">
+          <p>${searchData[1].content}</p>
+        </div>
+        <div class="title">
+          <i class="dropdown icon"></i>
+            ${searchData[2].title} by ${searchData[2].poet.name}
+        </div>
+        <div class="content">
+          <p>${searchData[1].content}</p>
+        </div>
+        </div>
+      </div>
+      </div>`
+     
+      results.innerHTML = `<div class="ui top attached inverted segment center aligned">
+        Types of Information you can gather from poemist
+      </div>
+      <table class="ui attached inverted table center aligned">
+        <thead>
+          <th>Poemist Random Poem Search</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>5 random poems are returned</td>
+          </tr>
+          <tr>
+            <td>Title of the poems</td>
+          </tr>
+          <tr>
+            <td>Content of the poems</td>
+          </tr>
+          <tr>
+            <td>Author of the poems</td>
+          </tr>
+        </tbody>
+      </table>`
+      })
+      .then(() => {
+        $('.ui.accordion').accordion('refresh');
+      })
+      .catch(error => {
+        errorDialogEl.innerHTML = `<p>${error}</p>`
+        $('.ui.basic.modal')
+        .modal('show')
+        ;
+      })
   }
 
 }
