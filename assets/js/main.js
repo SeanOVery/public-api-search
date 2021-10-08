@@ -42,8 +42,6 @@ formEl.addEventListener('submit', (ev) => {
   
 })
 
-
-
 function setDropdown(event) {
   let target = event.target,
     val
@@ -98,7 +96,6 @@ const createRecentSearchLinks = () => {
 }
 
 apiTypeSelect.addEventListener('click', setDropdown)
-
 
 $('.ui.dropdown')
   .dropdown()

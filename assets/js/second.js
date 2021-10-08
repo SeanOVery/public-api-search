@@ -18,14 +18,6 @@ let recentSearchArr = [],
     checkApiType()
   }
 
-// const getResults = () => {
-//     apiCall.textContent = `Bringing in the api type: ${apiType} in order to help choose which fetch call to use`
-//     results.textContent = `A box will go here showing a useful set of results from the ${apiToFetch} API`
-// }
-
-// getResults()
-
-
 const createRecentSearchLinks = () => {
   for (let i = 0; i < recentSearchArr.length; i++) {
     let newA = document.createElement('a')
@@ -35,7 +27,6 @@ const createRecentSearchLinks = () => {
     recentSearchEl.append(newA)
   }
 }
-
 
 const booksApiFunc = () => {
   let callUrl = ''
