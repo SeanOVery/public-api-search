@@ -70,3 +70,7 @@ h6 {
   text-align: left;
   padding: 20px;
 }
+
+.hidden {
+  display: none;
+}

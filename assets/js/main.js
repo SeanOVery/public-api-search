@@ -3,6 +3,7 @@ const formEl = document.querySelector('.search-form'),
   apiSelect = document.querySelector('#api-select-dropdown'),
   apiTypeSelect = document.querySelector('.api-type-select'),
   recentSearchEl = document.querySelector('#recent-search-dropdown'),
+  hiddenDropdownEl = document.querySelector('#hidden-dropdown'),
   artArr = ['Art Institute of Chicago', 'Colour Lovers', 'Metropolitan Museum of Art', 'Pixel Encounter'],
   artArrShort = ['artchicago', 'colourovers','metart','pixelencounter'],
   bookArr = ['British National Bibliography', 'Library of Congress', 'Open Library', 'Penguin Publishing'],
@@ -47,6 +48,7 @@ function setDropdown(event) {
   let target = event.target,
     val
   if (target.hasAttribute('data-select')) {
+    hiddenDropdownEl.classList.remove('hidden')
     val = target.innerText.trim()
   }
 
@@ -70,6 +72,7 @@ function setDropdown(event) {
 }
 
 function dropdownCreation() {
+  $('#api-select-dropdown').removeClass('hidden')
   while (apiSelect.firstChild) {
     apiSelect.removeChild(apiSelect.firstChild)
   }
