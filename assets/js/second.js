@@ -325,13 +325,39 @@ const booksApiFunc = () => {
 
 }
 
+const foodApiFunc = () => {
+  let callUrl = ''
+
+  if (apiToFetch === 'foodish') {
+    callUrl = 'https://foodish-api.herokuapp.com/api/'
+    fetch(callUrl)
+    .then(response => {
+      if (response.status === 200) {
+        return response.json ()
+      } else if (response.status === 500) {
+        throw new Error('500 Internal Server Error')
+      }
+    })
+    .then(data => {
+      console.log(data)
+      searchData = data
+    apiCall.innerHTML = ''
+    })
+    .then(() => {
+      $('.ui.basic.modal')
+      .modal('show')
+      ;
+    })
+  }
+}
+
 const checkApiType = () => {
   if (apiType === 'Art') {
     //artApiFunc
   } else if (apiType === 'Books'){
     booksApiFunc()
   } else {
-    //food&drink func
+    foodApiFunc ()
   }
 
 }

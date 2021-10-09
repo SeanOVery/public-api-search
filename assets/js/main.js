@@ -62,7 +62,7 @@ function setDropdown(event) {
     dropdownCreation()
   }
 
-  if (val ==='Food&Drink') {
+  if (val ==='FoodAndDrinks') {
     arr = foodDrinkArr
     arrShort = foodDrinkArrShort
     dropdownCreation()
