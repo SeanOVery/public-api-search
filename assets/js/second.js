@@ -321,6 +321,7 @@ const booksApiFunc = () => {
         .modal('show')
         ;
       })
+
   }
 
 }
@@ -341,12 +342,72 @@ const foodApiFunc = () => {
     .then(data => {
       console.log(data)
       searchData = data
-    apiCall.innerHTML = ''
+    apiCall.innerHTML = `
+    <h1> Example API Call<h1>
+    <img src="">
+    `
+    results.innerHTML = `
+    
+    `
     })
     .then(() => {
       $('.ui.basic.modal')
       .modal('show')
       ;
+    })
+    
+  } else if (apiToFetch === 'openBrew') {
+    callUrl = 'https://api.openbrewerydb.org/breweries'
+    fetch(callUrl)
+    .then(response => {
+      if (response.status === 200) {
+        return response.json ()
+      } else if (response.status === 500) {
+        throw new Error('500 Internal Server Error')
+      }
+    })
+    .then(data => {
+      console.log(data)
+      searchData = data
+    apiCall.innerHTML = `
+    `
+    results.innerHTML = `
+    `
+    })
+  } else if (apiToFetch === 'openFoodFacts') {
+    callUrl = 'https://world.openfoodfacts.org/api/v0/product/737628064502.json'
+    fetch(callUrl)
+    .then(response => {
+      if (response.status === 200) {
+        return response.json ()
+      } else if (response.status === 500) {
+        throw new Error('500 Internal Server Error')
+      }
+    })
+    .then(data => {
+      console.log(data)
+      searchData = data
+    apiCall.innerHTML = `
+    `
+    results.innerHTML = `
+    `
+    })
+  } else if (apiToFetch === 'coffee') {
+    callUrl = 'https://coffee.alexflipnote.dev/'
+    fetch(callUrl)
+    .then(response => {
+      if (response.status === 200) {
+        return response.json ()
+      } else if (response.status === 500) {
+        throw new Error('500 Internal Server Error')
+      }
+    })
+    .then(data => {
+      console.log(data)
+      searchData = data
+    apiCall.innerHTML = ``
+    results.innerHTML = ``
+
     })
   }
 }
