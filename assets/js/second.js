@@ -652,9 +652,6 @@ if (apiToFetch === 'HarvardArtMuseum') {
 
   }
 
-
-
-
 }
 
 
