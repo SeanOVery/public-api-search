@@ -16,6 +16,11 @@ Link to the live site [here.](https://seanovery.github.io/public-api-search/)
 * [Library of Congress API](https://www.loc.gov/apis/json-and-yaml/)
 * [Open Library API](https://openlibrary.org/developers/api)
 * [Poemist API](https://poemist.github.io/poemist-apidoc/)
+* [Art Institute of Chicago API](https://api.artic.edu/docs/)
+* [Metropolitaion Museum of Art API](https://metmuseum.github.io/)
+* [Cleveland Museum of Arts API](https://openaccess-api.clevelandart.org/)
+* [Hardvard Museum of Art API](https://github.com/harvardartmuseums/api-docs)
+* [Foodish API](https://foodish-api.herokuapp.com/)
 
 ---
 
