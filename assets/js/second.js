@@ -183,38 +183,38 @@ const booksApiFunc = () => {
         <div class="ui grid">
         <div class="four wide column left floated">
           <img src="http://covers.openlibrary.org/b/isbn/${
-            searchData.docs[0].isbn[0]
+            searchData.docs[1].isbn[1]
           }-M.jpg">
         </div>
         <div class="ten wide column">
         <table class="ui attached inverted table center aligned">
           <thead>
-            <th>${searchData.docs[0].title}</th>
+            <th>${searchData.docs[1].title}</th>
           </thead>
           <tbody>
             <tr>
-              <td>Author: ${searchData.docs[0].author_name}</td>
+              <td>Author: ${searchData.docs[1].author_name}</td>
             </tr>
             <tr>
               <td>First Year Published: ${
-                searchData.docs[0].first_publish_year
+                searchData.docs[1].first_publish_year
               }</td>
             </tr>
               <td>How Many Editions Exist: ${
-                searchData.docs[0].edition_count
+                searchData.docs[1].edition_count
               }</td>
             <tr>
               <td>Some Characters: ${
-                searchData.docs[0].person[
-                  Math.floor(Math.random() * searchData.docs[0].person.length)
+                searchData.docs[1].person[
+                  Math.floor(Math.random() * searchData.docs[1].person.length)
                 ]
               }, ${
-          searchData.docs[0].person[
-            Math.floor(Math.random() * searchData.docs[0].person.length)
+          searchData.docs[1].person[
+            Math.floor(Math.random() * searchData.docs[1].person.length)
           ]
         }, ${
-          searchData.docs[0].person[
-            Math.floor(Math.random() * searchData.docs[0].person.length)
+          searchData.docs[1].person[
+            Math.floor(Math.random() * searchData.docs[1].person.length)
           ]
         }</td>
             </tr>
