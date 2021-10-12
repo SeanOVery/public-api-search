@@ -670,7 +670,7 @@ const foodApiFunc = () => {
       }
     })
     .then(data => {
-      console.log(data)
+      // console.log(data)
       searchData = data
     apiCall.innerHTML = `
     <h1> Example API Call<h1>
@@ -712,7 +712,7 @@ const foodApiFunc = () => {
       }
     })
     .then(data => {
-      console.log(data)
+      // console.log(data)
       searchData = data
       var letObj0 = searchData[Math.floor(Math.random() * searchData.length)]
       var letObj1 = searchData[Math.floor(Math.random() * searchData.length)]
@@ -784,13 +784,13 @@ const foodApiFunc = () => {
       }
     })
     .then(data => {
-      console.log(data)
+      // console.log(data)
       searchData = data
     apiCall.innerHTML = `
       <h1>Example Api Call</h1>   
         <div class="ui grid">
         <div class="four wide column left floated centered">
-          <div class="ui medium image">
+          <div class="ui small image">
             <img src= ${searchData[0].image_url}>
           </div>
         </div>
@@ -806,9 +806,9 @@ const foodApiFunc = () => {
             <tr>
               <td>First Brewed - ${searchData[0].first_brewed} </td>
             </tr>
-              <td>Volume - ${searchData[0].volume} </td>
+              <td>Volume - ${searchData[0].volume.value} ${searchData[0].volume.unit} </td>
             <tr>
-              <td>Some Characters: </td>
+              <td>Tagline - ${searchData[0].tagline} </td>
             </tr>
           </tbody>
         </table> 
@@ -816,7 +816,28 @@ const foodApiFunc = () => {
         </div>
     `
     results.innerHTML = `
-
+    <div class="ui top attached inverted segment center aligned">
+        Other Resources/Information gathered from Punk API
+      </div>
+      <table class="ui attached inverted table center aligned">
+        <thead>
+          <th>Punk API Search</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>The ingredients used in each ale are found in an object.</td>
+          </tr>
+          <tr>
+            <td>A short and concise description of each and every beverage in their database.</td>
+          </tr>
+          <tr>
+            <td>"Brewer's Tips" which are tips from the original brewer on how to perfect the flavor</td>
+          </tr>
+          <tr>
+            <td>"Food Pairing" which is gathered in an array, which lists the best foods that pair with the pulled beverage.</td>
+          </tr>
+        </tbody>
+      </table>
     `
     })
     .catch((error) => {
@@ -836,7 +857,7 @@ const foodApiFunc = () => {
       }
     })
     .then(data => {
-      console.log(data)
+      // console.log(data)
       searchData = data
     apiCall.innerHTML = `
     <h1> Example API Call<h1>
