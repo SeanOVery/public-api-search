@@ -4,25 +4,34 @@ const formEl = document.querySelector('.search-form'),
   apiTypeSelect = document.querySelector('.api-type-select'),
   recentSearchEl = document.querySelector('#recent-search-dropdown'),
   hiddenDropdownEl = document.querySelector('#hidden-dropdown'),
-  artArr = ['Art Institute of Chicago','Metropolitan Museum of Art', 'Cleveland Museum of Arts','HarvardArtMuseum'],
-  artArrShort = ['artchicago','metart','clevelandArt','HarvardArtMuseum'],
-  bookArr = ['New York Times Books', 'Library of Congress', 'Open Library', 'Poemist'],
-  bookArrShort = ['nytBooks','libOfCongress', 'openLibrary', 'poemist'],
+  artArr = [
+    'Art Institute of Chicago',
+    'Metropolitan Museum of Art',
+    'Cleveland Museum of Arts',
+    'HarvardArtMuseum',
+  ],
+  artArrShort = ['artchicago', 'metart', 'clevelandArt', 'HarvardArtMuseum'],
+  bookArr = [
+    'New York Times Books',
+    'Library of Congress',
+    'Open Library',
+    'Poemist',
+  ],
+  bookArrShort = ['nytBooks', 'libOfCongress', 'openLibrary', 'poemist'],
   foodDrinkArr = ['Foodish', 'Open Brewery', 'Punk API', 'Coffee'],
-  foodDrinkArrShort = ['foodish', 'openBrew', 'punkAPI','coffee']
+  foodDrinkArrShort = ['foodish', 'openBrew', 'punkAPI', 'coffee']
 
 let redirectURL = `./secondpage.html?`,
   arr,
   arrShort,
   recentSearchArr = []
 
-
 const init = () => {
   let storedRecents = JSON.parse(localStorage.getItem('recents'))
 
-    if (storedRecents !== null) {
-      recentSearchArr = storedRecents
-    }
+  if (storedRecents !== null) {
+    recentSearchArr = storedRecents
+  }
   createRecentSearchLinks()
 }
 
@@ -30,16 +39,20 @@ formEl.addEventListener('submit', (ev) => {
   ev.preventDefault()
   let apiType = apiTypeSearch.innerText,
     apiSelection = apiSelect.value,
-    recentSearchSubArray = [apiType, apiSelection, apiSelect.nextSibling.nextSibling.textContent]
-    if (recentSearchArr.length >= 10) {
-      recentSearchArr.shift()
-      recentSearchArr.push(recentSearchSubArray)
-    } else {
-      recentSearchArr.push(recentSearchSubArray)
-    }
-    localStorage.setItem('recents', JSON.stringify(recentSearchArr))
-  location.href = redirectURL + `apitype=${apiType}&apiselection=${apiSelection}`
-  
+    recentSearchSubArray = [
+      apiType,
+      apiSelection,
+      apiSelect.nextSibling.nextSibling.textContent,
+    ]
+  if (recentSearchArr.length >= 10) {
+    recentSearchArr.shift()
+    recentSearchArr.push(recentSearchSubArray)
+  } else {
+    recentSearchArr.push(recentSearchSubArray)
+  }
+  localStorage.setItem('recents', JSON.stringify(recentSearchArr))
+  location.href =
+    redirectURL + `apitype=${apiType}&apiselection=${apiSelection}`
 })
 
 function setDropdown(event) {
@@ -51,9 +64,9 @@ function setDropdown(event) {
   }
 
   if (val === 'Art') {
-      arr = artArr
-      arrShort = artArrShort
-      dropdownCreation()
+    arr = artArr
+    arrShort = artArrShort
+    dropdownCreation()
   }
 
   if (val === 'Books') {
@@ -62,7 +75,7 @@ function setDropdown(event) {
     dropdownCreation()
   }
 
-  if (val ==='FoodAndDrinks') {
+  if (val === 'FoodAndDrinks') {
     arr = foodDrinkArr
     arrShort = foodDrinkArrShort
     dropdownCreation()
@@ -80,9 +93,7 @@ function dropdownCreation() {
     newOption.setAttribute('value', arrShort[i])
     newOption.textContent = arr[i]
     apiSelect.append(newOption)
-
   }
-
 }
 
 const createRecentSearchLinks = () => {
@@ -90,15 +101,15 @@ const createRecentSearchLinks = () => {
     let newA = document.createElement('a')
     newA.classList.add('item')
     newA.textContent = recentSearchArr[i][2]
-    newA.href = redirectURL + `apitype=${recentSearchArr[i][0]}&apiselection=${recentSearchArr[i][1]}`
+    newA.href =
+      redirectURL +
+      `apitype=${recentSearchArr[i][0]}&apiselection=${recentSearchArr[i][1]}`
     recentSearchEl.append(newA)
   }
 }
 
 apiTypeSelect.addEventListener('click', setDropdown)
 
-$('.ui.dropdown')
-  .dropdown()
-;
+$('.ui.dropdown').dropdown()
 
 init()

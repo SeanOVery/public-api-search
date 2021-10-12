@@ -19,7 +19,6 @@ const init = () => {
   checkApiType()
 }
 
-
 const createRecentSearchLinks = () => {
   for (let i = 0; i < recentSearchArr.length; i++) {
     let newA = document.createElement('a')
@@ -30,32 +29,21 @@ const createRecentSearchLinks = () => {
   }
 }
 
-fetch(
-  // Explain each parameter in comments below.
-  'https://api.harvardartmuseums.org/object?apikey=87912ba2-2131-413a-83b6-f4033acccb48'
-)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-  });
-
-
 const booksApiFunc = () => {
   let callUrl = ''
 
   if (apiToFetch === 'nytBooks') {
-    callUrl = 'https://api.nytimes.com/svc/books/v3/reviews.json?author=Stephen+King&api-key=Sqt8pojApVeCMUYS08uRPxR68Fn4xtGA'
+    callUrl =
+      'https://api.nytimes.com/svc/books/v3/reviews.json?author=Stephen+King&api-key=Sqt8pojApVeCMUYS08uRPxR68Fn4xtGA'
     fetch(callUrl)
-      .then(response => {
+      .then((response) => {
         if (response.status === 200) {
           return response.json()
         } else if (response.status === 500) {
           throw new Error('500 Internal Server Error')
         }
       })
-      .then(data => {
+      .then((data) => {
         searchData = data
         apiCall.innerHTML = `   
         <h1>Example Api Call</h1>   
@@ -106,24 +94,21 @@ const booksApiFunc = () => {
         </tbody>
       </table>`
       })
-      .catch(error => {
+      .catch((error) => {
         errorDialogEl.innerHTML = `<p>${error}</p>`
-        $('.ui.basic.modal')
-          .modal('show')
-          ;
+        $('.ui.basic.modal').modal('show')
       })
-
   } else if (apiToFetch === 'libOfCongress') {
     callUrl = 'https://www.loc.gov/search/?q=baseball&fo=json'
     fetch(callUrl)
-      .then(response => {
+      .then((response) => {
         if (response.status === 200) {
           return response.json()
         } else if (response.status === 500) {
           throw new Error('500 Internal Server Error')
         }
       })
-      .then(data => {
+      .then((data) => {
         searchData = data
         apiCall.innerHTML = `   
         <h1>Example Api Call</h1>   
@@ -177,47 +162,61 @@ const booksApiFunc = () => {
         </tbody>
       </table>`
       })
-      .catch(error => {
+      .catch((error) => {
         errorDialogEl.innerHTML = `<p>${error}</p>`
-        $('.ui.basic.modal')
-          .modal('show')
-          ;
+        $('.ui.basic.modal').modal('show')
       })
-
-
   } else if (apiToFetch === 'openLibrary') {
     callUrl = 'https://openlibrary.org/search.json?q=the+lord+of+the+rings'
     fetch(callUrl)
-      .then(response => {
+      .then((response) => {
         if (response.status === 200) {
           return response.json()
         } else if (response.status === 500) {
           throw new Error('500 Internal Server Error')
         }
       })
-      .then(data => {
+      .then((data) => {
         searchData = data
         apiCall.innerHTML = `   
         <h1>Example Api Call</h1>   
         <div class="ui grid">
         <div class="four wide column left floated">
-          <img src="http://covers.openlibrary.org/b/isbn/${searchData.docs[0].isbn[0]}-M.jpg">
+          <img src="http://covers.openlibrary.org/b/isbn/${
+            searchData.docs[1].isbn[1]
+          }-M.jpg">
         </div>
         <div class="ten wide column">
         <table class="ui attached inverted table center aligned">
           <thead>
-            <th>${searchData.docs[0].title}</th>
+            <th>${searchData.docs[1].title}</th>
           </thead>
           <tbody>
             <tr>
-              <td>Author: ${searchData.docs[0].author_name}</td>
+              <td>Author: ${searchData.docs[1].author_name}</td>
             </tr>
             <tr>
-              <td>First Year Published: ${searchData.docs[0].first_publish_year}</td>
+              <td>First Year Published: ${
+                searchData.docs[1].first_publish_year
+              }</td>
             </tr>
-              <td>How Many Editions Exist: ${searchData.docs[0].edition_count}</td>
+              <td>How Many Editions Exist: ${
+                searchData.docs[1].edition_count
+              }</td>
             <tr>
-              <td>Some Characters: ${searchData.docs[0].person[Math.floor(Math.random() * (searchData.docs[0].person.length))]}, ${searchData.docs[0].person[Math.floor(Math.random() * (searchData.docs[0].person.length))]}, ${searchData.docs[0].person[Math.floor(Math.random() * (searchData.docs[0].person.length))]}</td>
+              <td>Some Characters: ${
+                searchData.docs[1].person[
+                  Math.floor(Math.random() * searchData.docs[1].person.length)
+                ]
+              }, ${
+          searchData.docs[1].person[
+            Math.floor(Math.random() * searchData.docs[1].person.length)
+          ]
+        }, ${
+          searchData.docs[1].person[
+            Math.floor(Math.random() * searchData.docs[1].person.length)
+          ]
+        }</td>
             </tr>
           </tbody>
         </table> 
@@ -252,24 +251,21 @@ const booksApiFunc = () => {
         </tbody>
       </table>`
       })
-      .catch(error => {
+      .catch((error) => {
         errorDialogEl.innerHTML = `<p>${error}</p>`
-        $('.ui.basic.modal')
-          .modal('show')
-          ;
+        $('.ui.basic.modal').modal('show')
       })
-
   } else if (apiToFetch === 'poemist') {
     callUrl = 'https://www.poemist.com/api/v1/randompoems'
     fetch(callUrl)
-      .then(response => {
+      .then((response) => {
         if (response.status === 200) {
           return response.json()
         } else if (response.status === 500) {
           throw new Error('500 Internal Server Error')
         }
       })
-      .then(data => {
+      .then((data) => {
         searchData = data
         apiCall.innerHTML = `
       <h1>Example Api Call</h1>  
@@ -325,34 +321,29 @@ const booksApiFunc = () => {
       </table>`
       })
       .then(() => {
-        $('.ui.accordion').accordion('refresh');
+        $('.ui.accordion').accordion('refresh')
       })
-      .catch(error => {
+      .catch((error) => {
         errorDialogEl.innerHTML = `<p>${error}</p>`
-        $('.ui.basic.modal')
-          .modal('show')
-          ;
+        $('.ui.basic.modal').modal('show')
       })
   }
-
 }
 
-
-
-const ArtApiFunc = () => {
+const artApiFunc = () => {
   let callUrl = ''
 
   if (apiToFetch === 'artchicago') {
     callUrl = 'https://api.artic.edu/api/v1/artworks'
     fetch(callUrl)
-      .then(response => {
+      .then((response) => {
         if (response.status === 200) {
           return response.json()
         } else if (response.status === 500) {
           throw new Error('500 Internal Server Error')
         }
       })
-      .then(data => {
+      .then((data) => {
         searchData = data
         apiCall.innerHTML = `   
         <h1>ArtWorks Information</h1>   
@@ -410,27 +401,23 @@ const ArtApiFunc = () => {
         </tbody>
       </table>`
       })
-      .catch(error => {
+      .catch((error) => {
         errorDialogEl.innerHTML = `<p>${error}</p>`
-        $('.ui.basic.modal')
-          .modal('show')
-          ;
+        $('.ui.basic.modal').modal('show')
       })
-
-
-
   } else if (apiToFetch === 'metart') {
-    callUrl = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/437133'
+    callUrl =
+      'https://collectionapi.metmuseum.org/public/collection/v1/objects/437133'
 
     fetch(callUrl)
-      .then(response => {
+      .then((response) => {
         if (response.status === 200) {
           return response.json()
         } else if (response.status === 500) {
           throw new Error('500 Internal Server Error')
         }
       })
-      .then(data => {
+      .then((data) => {
         searchData = data
         apiCall.innerHTML = `   
         <h1>ArtWorks Information</h1>   
@@ -486,27 +473,24 @@ const ArtApiFunc = () => {
         </tbody>
       </table>`
       })
-      .catch(error => {
+      .catch((error) => {
         errorDialogEl.innerHTML = `<p>${error}</p>`
-        $('.ui.basic.modal')
-          .modal('show')
-          ;
+        $('.ui.basic.modal').modal('show')
       })
-  
-} else if (apiToFetch === 'clevelandArt') {
-  callUrl = 'https://openaccess-api.clevelandart.org/api/artworks/'
+  } else if (apiToFetch === 'clevelandArt') {
+    callUrl = 'https://openaccess-api.clevelandart.org/api/artworks/'
 
-  fetch(callUrl)
-    .then(response => {
-      if (response.status === 200) {
-        return response.json()
-      } else if (response.status === 500) {
-        throw new Error('500 Internal Server Error')
-      }
-    })
-    .then(data => {
-      searchData = data
-      apiCall.innerHTML = `   
+    fetch(callUrl)
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json()
+        } else if (response.status === 500) {
+          throw new Error('500 Internal Server Error')
+        }
+      })
+      .then((data) => {
+        searchData = data
+        apiCall.innerHTML = `   
       <h1>ArtWorks Information</h1>   
       <div class="ui grid">
       <div class="sixteen wide column">
@@ -531,7 +515,7 @@ const ArtApiFunc = () => {
       </div>
       </div>`
 
-      results.innerHTML = `<div class="ui top attached inverted segment center aligned">
+        results.innerHTML = `<div class="ui top attached inverted segment center aligned">
       Types of Information you can gather from the Cleveland Museum of Art Collection
     </div>
     <table class="ui attached inverted table center aligned">
@@ -562,29 +546,27 @@ const ArtApiFunc = () => {
         </tr>
       </tbody>
     </table>`
-    })
-    .catch(error => {
-      errorDialogEl.innerHTML = `<p>${error}</p>`
-      $('.ui.basic.modal')
-        .modal('show')
-        ;
+      })
+      .catch((error) => {
+        errorDialogEl.innerHTML = `<p>${error}</p>`
+        $('.ui.basic.modal').modal('show')
+      })
+  }
 
-    })
-}
-
-if (apiToFetch === 'HarvardArtMuseum') {
-  callUrl = 'https://api.harvardartmuseums.org/object?apikey=87912ba2-2131-413a-83b6-f4033acccb48'
-  fetch(callUrl)
-    .then(response => {
-      if (response.status === 200) {
-        return response.json()
-      } else if (response.status === 500) {
-        throw new Error('500 Internal Server Error')
-      }
-    })
-    .then(data => {
-      searchData = data
-      apiCall.innerHTML = `   
+  if (apiToFetch === 'HarvardArtMuseum') {
+    callUrl =
+      'https://api.harvardartmuseums.org/object?q=painting&apikey=87912ba2-2131-413a-83b6-f4033acccb48'
+    fetch(callUrl)
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json()
+        } else if (response.status === 500) {
+          throw new Error('500 Internal Server Error')
+        }
+      })
+      .then((data) => {
+        searchData = data
+        apiCall.innerHTML = `   
       <h1>ArtWorks Information</h1>   
       <div class="ui grid">
       <div class="sixteen wide column">
@@ -612,8 +594,8 @@ if (apiToFetch === 'HarvardArtMuseum') {
       </div>
       </div>`
 
-      results.innerHTML = `<div class="ui top attached inverted segment center aligned">
-      Types of Information you can gather from the HarvarArtMuseum
+        results.innerHTML = `<div class="ui top attached inverted segment center aligned">
+      Types of Information you can gather from the Harvard Art Museum
     </div>
     <table class="ui attached inverted table center aligned">
       <thead>
@@ -643,18 +625,13 @@ if (apiToFetch === 'HarvardArtMuseum') {
         </tr>
       </tbody>
     </table>`
-    })
-    .catch(error => {
-      errorDialogEl.innerHTML = `<p>${error}</p>`
-      $('.ui.basic.modal')
-        .modal('show')
-        ;
-    })
-
+      })
+      .catch((error) => {
+        errorDialogEl.innerHTML = `<p>${error}</p>`
+        $('.ui.basic.modal').modal('show')
+      })
   }
-
 }
-
 
 const foodApiFunc = () => {
   let callUrl = ''
@@ -662,23 +639,22 @@ const foodApiFunc = () => {
   if (apiToFetch === 'foodish') {
     callUrl = 'https://foodish-api.herokuapp.com/api/'
     fetch(callUrl)
-    .then(response => {
-      if (response.status === 200) {
-        return response.json ()
-      } else if (response.status === 500) {
-        throw new Error('500 Internal Server Error')
-      }
-    })
-    .then(data => {
-      // console.log(data)
-      searchData = data
-    apiCall.innerHTML = `
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json()
+        } else if (response.status === 500) {
+          throw new Error('500 Internal Server Error')
+        }
+      })
+      .then((data) => {
+        searchData = data
+        apiCall.innerHTML = `
     <h1> Example API Call<h1>
     <div class="ui medium image">
     <img src= ${searchData.image}>
     </div>
     `
-    results.innerHTML = `
+        results.innerHTML = `
     <div class="ui top attached inverted segment center aligned">
         Types of Information/Resources gathered from Foodish
       </div>
@@ -693,31 +669,28 @@ const foodApiFunc = () => {
         </tbody>
       </table>
     `
-    })
-    .catch((error) => {
-      errorDiaglogEl.innerHTML = `<p>${error}<p>`
-      $('.ui.basic.modal')
-      .modal('show')
-      ;
-    })
-    
+      })
+      .catch((error) => {
+        errorDiaglogEl.innerHTML = `<p>${error}<p>`
+        $('.ui.basic.modal').modal('show')
+      })
   } else if (apiToFetch === 'openBrew') {
     callUrl = 'https://api.openbrewerydb.org/breweries'
     fetch(callUrl)
-    .then(response => {
-      if (response.status === 200) {
-        return response.json ()
-      } else if (response.status === 500) {
-        throw new Error('500 Internal Server Error')
-      }
-    })
-    .then(data => {
-      // console.log(data)
-      searchData = data
-      var letObj0 = searchData[Math.floor(Math.random() * searchData.length)]
-      var letObj1 = searchData[Math.floor(Math.random() * searchData.length)]
-      var letObj2 = searchData[Math.floor(Math.random() * searchData.length)]
-    apiCall.innerHTML = `
+
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json()
+        } else if (response.status === 500) {
+          throw new Error('500 Internal Server Error')
+        }
+      })
+      .then((data) => {
+        searchData = data
+        var letObj0 = searchData[Math.floor(Math.random() * searchData.length)]
+        var letObj1 = searchData[Math.floor(Math.random() * searchData.length)]
+        var letObj2 = searchData[Math.floor(Math.random() * searchData.length)]
+        apiCall.innerHTML = `
     <h1>Example Api Call</h1>   
     <table class="ui celled inverted table">
       <thead>
@@ -744,7 +717,7 @@ const foodApiFunc = () => {
       </tbody>
     </table>
     `
-    results.innerHTML = `
+        results.innerHTML = `
     <div class="ui top attached inverted segment center aligned">
         Types of Information/Resources gathered from Open Brew
       </div>
@@ -765,28 +738,24 @@ const foodApiFunc = () => {
         </tbody>
       </table>
     `
-    })
-    .catch((error) => {
-      errorDiaglogEl.innerHTML = `<p>${error}<p>`
-      $('.ui.basic.modal')
-      .modal('show')
-      ;
-    })
-
+      })
+      .catch((error) => {
+        errorDiaglogEl.innerHTML = `<p>${error}<p>`
+        $('.ui.basic.modal').modal('show')
+      })
   } else if (apiToFetch === 'punkAPI') {
     callUrl = 'https://api.punkapi.com/v2/beers/random'
     fetch(callUrl)
-    .then(response => {
-      if (response.status === 200) {
-        return response.json ()
-      } else if (response.status === 500) {
-        throw new Error('500 Internal Server Error')
-      }
-    })
-    .then(data => {
-      // console.log(data)
-      searchData = data
-    apiCall.innerHTML = `
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json()
+        } else if (response.status === 500) {
+          throw new Error('500 Internal Server Error')
+        }
+      })
+      .then((data) => {
+        searchData = data
+        apiCall.innerHTML = `
       <h1>Example Api Call</h1>   
         <div class="ui grid">
         <div class="four wide column left floated centered">
@@ -815,6 +784,7 @@ const foodApiFunc = () => {
         </div>
         </div>
     `
+
     results.innerHTML = `
     <div class="ui top attached inverted segment center aligned">
         Other Resources/Information gathered from Punk API
@@ -839,33 +809,32 @@ const foodApiFunc = () => {
         </tbody>
       </table>
     `
-    })
-    .catch((error) => {
-      errorDiaglogEl.innerHTML = `<p>${error}<p>`
-      $('.ui.basic.modal')
-      .modal('show')
-      ;
-    })
+      })
+      .catch((error) => {
+        errorDiaglogEl.innerHTML = `<p>${error}<p>`
+        $('.ui.basic.modal').modal('show')
+      })
   } else if (apiToFetch === 'coffee') {
-    callUrl = 'https://cors-anywhere.herokuapp.com/https://coffee.alexflipnote.dev/random.json'
+    callUrl =
+      'https://aqueous-castle-73239.herokuapp.com/https://coffee.alexflipnote.dev/random.json'
     fetch(callUrl)
-    .then(response => {
-      if (response.status === 200) {
-        return response.json ()
-      } else if (response.status === 500) {
-        throw new Error('500 Internal Server Error')
-      }
-    })
-    .then(data => {
-      // console.log(data)
-      searchData = data
-    apiCall.innerHTML = `
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json()
+        } else if (response.status === 500) {
+          throw new Error('500 Internal Server Error')
+        }
+      })
+      .then((data) => {
+        searchData = data
+        apiCall.innerHTML = `
+
     <h1> Example API Call<h1>
     <div class="ui medium image">
     <img src= ${searchData.file}>
     </div>
     `
-    results.innerHTML = `
+        results.innerHTML = `
     <div class="ui top attached inverted segment center aligned">
         Types of Information/Resources gathered from Coffee
       </div>
@@ -880,29 +849,22 @@ const foodApiFunc = () => {
         </tbody>
       </table>
     `
-
-    })
-    .catch((error) => {
-      errorDiaglogEl.innerHTML = `<p>${error}<p>`
-      $('.ui.basic.modal')
-      .modal('show')
-      ;
-    })
+      })
+      .catch((error) => {
+        errorDiaglogEl.innerHTML = `<p>${error}<p>`
+        $('.ui.basic.modal').modal('show')
+      })
   }
 }
-
 
 const checkApiType = () => {
   if (apiType === 'Art') {
-    ArtApiFunc()
+    artApiFunc()
   } else if (apiType === 'Books') {
     booksApiFunc()
   } else {
-    foodApiFunc ()
+    foodApiFunc()
   }
-
 }
 
 init()
-
-

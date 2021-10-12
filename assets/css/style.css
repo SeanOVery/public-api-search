@@ -4,7 +4,7 @@
 :root {
   --primary-color: rgba(36, 36, 36, 0.25);
   --secondary-color: #303030;
-  --accent-color: #1B1C1D;
+  --accent-color: #1b1c1d;
   --text-primary: #fff;
   --ff-primary: 'Poppins', sans-serif;
   --ff-secondary: 'Rubik', sans-serif;
@@ -22,7 +22,11 @@ body {
   align-items: center;
   justify-content: center;
   background: rgb(36, 36, 36, 1);
-  background: radial-gradient(circle, rgba(56,60,60,1) 0%, rgba(36,36,36,1) 100%); 
+  background: radial-gradient(
+    circle,
+    rgba(56, 60, 60, 1) 0%,
+    rgba(36, 36, 36, 1) 100%
+  );
   color: var(--text-primary);
   font-weight: 400;
 }
@@ -36,7 +40,7 @@ h6 {
   margin: 0;
 }
 
-.custom-nav{
+.custom-nav {
   background-color: inherit;
   font-family: var(--ff-secondary);
 }
@@ -123,10 +127,11 @@ h6 {
   padding: 20px;
 }
 
-img, table{
+img,
+table {
   border-radius: 5px !important;
 }
 
 #api-call h1 {
-  margin-bottom: 3rem ;
+  margin-bottom: 3rem;
 }
