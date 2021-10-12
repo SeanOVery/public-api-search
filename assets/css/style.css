@@ -44,8 +44,8 @@ h6 {
 .results-container {
   background-color: var(--results-bg) !important;
   color: white;
-  width: 800px;
-  height: 400px;
+  width: auto;
+  height: auto;
   border-radius: 10px !important;
   display: flex;
   flex-direction: column;
