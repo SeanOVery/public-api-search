@@ -555,7 +555,7 @@ const ArtApiFunc = () => {
 
   if (apiToFetch === 'HarvardArtMuseum') {
     callUrl =
-      'https://api.harvardartmuseums.org/object?apikey=87912ba2-2131-413a-83b6-f4033acccb48'
+      'https://api.harvardartmuseums.org/object?q=painting&apikey=87912ba2-2131-413a-83b6-f4033acccb48'
     fetch(callUrl)
       .then((response) => {
         if (response.status === 200) {
@@ -647,7 +647,6 @@ const foodApiFunc = () => {
         }
       })
       .then((data) => {
-        console.log(data)
         searchData = data
         apiCall.innerHTML = `
     <h1> Example API Call<h1>
@@ -686,7 +685,6 @@ const foodApiFunc = () => {
         }
       })
       .then((data) => {
-        console.log(data)
         searchData = data
         var letObj0 = searchData[Math.floor(Math.random() * searchData.length)]
         var letObj1 = searchData[Math.floor(Math.random() * searchData.length)]
@@ -755,7 +753,6 @@ const foodApiFunc = () => {
         }
       })
       .then((data) => {
-        console.log(data)
         searchData = data
         apiCall.innerHTML = `
       <h1>Example Api Call</h1>   
@@ -806,7 +803,6 @@ const foodApiFunc = () => {
         }
       })
       .then((data) => {
-        console.log(data)
         searchData = data
         apiCall.innerHTML = `
     <h1> Example API Call<h1>
