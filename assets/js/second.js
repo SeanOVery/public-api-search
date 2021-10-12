@@ -793,7 +793,7 @@ const foodApiFunc = () => {
       })
   } else if (apiToFetch === 'coffee') {
     callUrl =
-      'https://cors-anywhere.herokuapp.com/https://coffee.alexflipnote.dev/random.json'
+      'https://aqueous-castle-73239.herokuapp.com/https://coffee.alexflipnote.dev/random.json'
     fetch(callUrl)
       .then((response) => {
         if (response.status === 200) {
