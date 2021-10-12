@@ -1,26 +1,54 @@
-# public-api-search-mockup
+# Public API Search
 
-## General Idea for this project
-  What we would be doing here is creating a searchable group of apis. You would select an API and then submit the form. You would then be redirected to another page which will give you a list of useful information you could pull from that api in a nicely formatted page.
-  The focus will be on no authentication APIs so nothing which requires an API key of any sort
+## Live Site
+
+Link to the live site [here.](https://seanovery.github.io/public-api-search/)
+
+---
+
+# Resources used
+## Dependencies
+* [Semantic UI](https://semantic-ui.com/) 
+* [Jquery](https://jquery.com/)
+* [Google Fonts](https://fonts.google.com/)
+## APIs
+* [New York Times Books API](https://developer.nytimes.com/docs/books-product/1/overview)
+* [Library of Congress API](https://www.loc.gov/apis/json-and-yaml/)
+* [Open Library API](https://openlibrary.org/developers/api)
+* [Poemist API](https://poemist.github.io/poemist-apidoc/)
+* [Art Institute of Chicago API](https://api.artic.edu/docs/)
+* [Metropolitaion Museum of Art API](https://metmuseum.github.io/)
+* [Cleveland Museum of Arts API](https://openaccess-api.clevelandart.org/)
+* [Hardvard Museum of Art API](https://github.com/harvardartmuseums/api-docs)
+* [Foodish API](https://foodish-api.herokuapp.com/)
+* [Open Brewery API](https://www.openbrewerydb.org/documentation)
+* [Open Food Facts API](https://world.openfoodfacts.org/data)
+* [Coffee API](https://coffee.alexflipnote.dev/)
+
+---
+
+## Project Description
+  This project aims to create a website where developers can filter through a list of apis, select a specific API, and get an example API call as well as a description of major important info you can get from that api. This should help developers more quickly find an API which may suit their needs for a project.
+
+---
 
 ## User Story
-  AS A web developer
-  I WANT to be able to quickly see useful information I can pull from APIs
+  AS A web developer <br>
+  I WANT to be able to quickly see useful information I can pull from APIs<br>
   SO THAT I can more quickly determine if an API will be useful to me for my project
 
-## wireframe/mockup 
+---
+
+## Screenshots
 Main page
 ![Main Page](./assets/images/main.png)
 Results
 ![Results Page](./assets/images/results.png)
+![Results Page2](./assets/images/results2.png)
 
-## APIs to be used 
-At this point there will be a lot of APIs so I can't say specifically which ones
+---
 
-## Rough breakdown of tasks
-1. We get the base pages set up more cleanly 
-2. We start pulling info from 1 api and organizing it cleanly on the results page
-3. We do the same for the rest of a category of APIs. pulling categories and APIs from [this](https://github.com/public-apis/public-apis) page
-4. after we have a category fully functional we add more categories.
-5. we can assing a category for each group memeber to work on so we can split up this work.
+## Collaborators
+* [Fahad Islam](https://github.com/sadiyan)
+* [Rekha Selvan](https://github.com/rekhaselvan01)
+* [Sean O'Very](https://github.com/SeanOVery)
