@@ -8,8 +8,8 @@ const formEl = document.querySelector('.search-form'),
   artArrShort = ['artchicago','metart','clevelandArt','HarvardArtMuseum'],
   bookArr = ['New York Times Books', 'Library of Congress', 'Open Library', 'Poemist'],
   bookArrShort = ['nytBooks','libOfCongress', 'openLibrary', 'poemist'],
-  foodDrinkArr = ['Foodish', 'Open Brewery', 'Open Food Facts', 'Coffee'],
-  foodDrinkArrShort = ['foodish', 'openBrew', 'openFoodFacts','coffee']
+  foodDrinkArr = ['Foodish', 'Open Brewery', 'Punk API', 'Coffee'],
+  foodDrinkArrShort = ['foodish', 'openBrew', 'punkAPI','coffee']
 
 let redirectURL = `./secondpage.html?`,
   arr,
@@ -62,7 +62,7 @@ function setDropdown(event) {
     dropdownCreation()
   }
 
-  if (val ==='Food&Drink') {
+  if (val ==='FoodAndDrinks') {
     arr = foodDrinkArr
     arrShort = foodDrinkArrShort
     dropdownCreation()

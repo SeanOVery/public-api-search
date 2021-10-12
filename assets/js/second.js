@@ -568,6 +568,7 @@ const ArtApiFunc = () => {
       $('.ui.basic.modal')
         .modal('show')
         ;
+
     })
 }
 
@@ -655,13 +656,228 @@ if (apiToFetch === 'HarvardArtMuseum') {
 }
 
 
+const foodApiFunc = () => {
+  let callUrl = ''
+
+  if (apiToFetch === 'foodish') {
+    callUrl = 'https://foodish-api.herokuapp.com/api/'
+    fetch(callUrl)
+    .then(response => {
+      if (response.status === 200) {
+        return response.json ()
+      } else if (response.status === 500) {
+        throw new Error('500 Internal Server Error')
+      }
+    })
+    .then(data => {
+      console.log(data)
+      searchData = data
+    apiCall.innerHTML = `
+    <h1> Example API Call<h1>
+    <div class="ui medium image">
+    <img src= ${searchData.image}>
+    </div>
+    `
+    results.innerHTML = `
+    <div class="ui top attached inverted segment center aligned">
+        Types of Information/Resources gathered from Foodish
+      </div>
+      <table class="ui attached inverted table center aligned">
+        <thead>
+          <th>Foodish Random Image Search</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 random food image is returned</td>
+          </tr>
+        </tbody>
+      </table>
+    `
+    })
+    .catch((error) => {
+      errorDiaglogEl.innerHTML = `<p>${error}<p>`
+      $('.ui.basic.modal')
+      .modal('show')
+      ;
+    })
+    
+  } else if (apiToFetch === 'openBrew') {
+    callUrl = 'https://api.openbrewerydb.org/breweries'
+    fetch(callUrl)
+    .then(response => {
+      if (response.status === 200) {
+        return response.json ()
+      } else if (response.status === 500) {
+        throw new Error('500 Internal Server Error')
+      }
+    })
+    .then(data => {
+      console.log(data)
+      searchData = data
+      var letObj0 = searchData[Math.floor(Math.random() * searchData.length)]
+      var letObj1 = searchData[Math.floor(Math.random() * searchData.length)]
+      var letObj2 = searchData[Math.floor(Math.random() * searchData.length)]
+    apiCall.innerHTML = `
+    <h1>Example Api Call</h1>   
+    <table class="ui celled inverted table">
+      <thead>
+        <tr><th>Name</th>
+        <th>Type</th>
+        <th>Address</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td data-label="Name">${letObj0.name}</td>
+          <td data-label="Type">${letObj0.brewery_type}</td>
+          <td data-label="Address">${letObj0.city}, ${letObj0.state} - ${letObj0.postal_code}</td>
+        </tr>
+        <tr>
+          <td data-label="Name">${letObj1.name}</td>
+          <td data-label="Type">${letObj1.brewery_type}</td>
+          <td data-label="Address">${letObj1.city}, ${letObj1.state} - ${letObj1.postal_code}</td>
+        </tr>
+        <tr>
+          <td data-label="Name">${letObj2.name}</td>
+          <td data-label="Type">${letObj2.brewery_type}</td>
+          <td data-label="Address">${letObj2.city}, ${letObj2.state} - ${letObj2.postal_code}</td>
+        </tr>
+      </tbody>
+    </table>
+    `
+    results.innerHTML = `
+    <div class="ui top attached inverted segment center aligned">
+        Types of Information/Resources gathered from Open Brew
+      </div>
+      <table class="ui attached inverted table center aligned">
+        <thead>
+          <th>Open Brew Search</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3 random breweries are returned</td>
+          </tr>
+          <tr>
+            <td>The planning types of those breweries</td>
+          </tr>
+          <tr>
+            <td>The City/State and Postal Code are returned</td>
+          </tr>
+        </tbody>
+      </table>
+    `
+    })
+    .catch((error) => {
+      errorDiaglogEl.innerHTML = `<p>${error}<p>`
+      $('.ui.basic.modal')
+      .modal('show')
+      ;
+    })
+
+  } else if (apiToFetch === 'punkAPI') {
+    callUrl = 'https://api.punkapi.com/v2/beers/random'
+    fetch(callUrl)
+    .then(response => {
+      if (response.status === 200) {
+        return response.json ()
+      } else if (response.status === 500) {
+        throw new Error('500 Internal Server Error')
+      }
+    })
+    .then(data => {
+      console.log(data)
+      searchData = data
+    apiCall.innerHTML = `
+      <h1>Example Api Call</h1>   
+        <div class="ui grid">
+        <div class="four wide column left floated centered">
+          <div class="ui medium image">
+            <img src= ${searchData[0].image_url}>
+          </div>
+        </div>
+        <div class="ten wide column">
+        <table class="ui attached inverted table center aligned">
+          <thead>
+            <th>${searchData[0].name}</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ABV Content -  ${searchData[0].abv}% </td>
+            </tr>
+            <tr>
+              <td>First Brewed - ${searchData[0].first_brewed} </td>
+            </tr>
+              <td>Volume - ${searchData[0].volume} </td>
+            <tr>
+              <td>Some Characters: </td>
+            </tr>
+          </tbody>
+        </table> 
+        </div>
+        </div>
+    `
+    results.innerHTML = `
+
+    `
+    })
+    .catch((error) => {
+      errorDiaglogEl.innerHTML = `<p>${error}<p>`
+      $('.ui.basic.modal')
+      .modal('show')
+      ;
+    })
+  } else if (apiToFetch === 'coffee') {
+    callUrl = 'https://cors-anywhere.herokuapp.com/https://coffee.alexflipnote.dev/random.json'
+    fetch(callUrl)
+    .then(response => {
+      if (response.status === 200) {
+        return response.json ()
+      } else if (response.status === 500) {
+        throw new Error('500 Internal Server Error')
+      }
+    })
+    .then(data => {
+      console.log(data)
+      searchData = data
+    apiCall.innerHTML = `
+    <h1> Example API Call<h1>
+    <div class="ui medium image">
+    <img src= ${searchData.file}>
+    </div>
+    `
+    results.innerHTML = `
+    <div class="ui top attached inverted segment center aligned">
+        Types of Information/Resources gathered from Coffee
+      </div>
+      <table class="ui attached inverted table center aligned">
+        <thead>
+          <th>Coffee Random Image Search</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 random coffee image is returned</td>
+          </tr>
+        </tbody>
+      </table>
+    `
+
+    })
+    .catch((error) => {
+      errorDiaglogEl.innerHTML = `<p>${error}<p>`
+      $('.ui.basic.modal')
+      .modal('show')
+      ;
+    })
+  }
+}
+
+
 const checkApiType = () => {
   if (apiType === 'Art') {
     ArtApiFunc()
   } else if (apiType === 'Books') {
     booksApiFunc()
   } else {
-    //food&drink func
+    foodApiFunc ()
   }
 
 }
