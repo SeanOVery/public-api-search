@@ -22,7 +22,7 @@ Link to the live site [here.](https://seanovery.github.io/public-api-search/)
 * [Hardvard Museum of Art API](https://github.com/harvardartmuseums/api-docs)
 * [Foodish API](https://foodish-api.herokuapp.com/)
 * [Open Brewery API](https://www.openbrewerydb.org/documentation)
-* [Open Food Facts API](https://world.openfoodfacts.org/data)
+* [Punk API](https://punkapi.com/documentation/v2)
 * [Coffee API](https://coffee.alexflipnote.dev/)
 
 ---
