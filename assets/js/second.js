@@ -595,7 +595,7 @@ const ArtApiFunc = () => {
       </div>`
 
         results.innerHTML = `<div class="ui top attached inverted segment center aligned">
-      Types of Information you can gather from the HarvarArtMuseum
+      Types of Information you can gather from the Harvard Art Museum
     </div>
     <table class="ui attached inverted table center aligned">
       <thead>
