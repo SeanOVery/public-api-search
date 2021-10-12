@@ -330,7 +330,7 @@ const booksApiFunc = () => {
   }
 }
 
-const ArtApiFunc = () => {
+const artApiFunc = () => {
   let callUrl = ''
 
   if (apiToFetch === 'artchicago') {
@@ -835,7 +835,7 @@ const foodApiFunc = () => {
 
 const checkApiType = () => {
   if (apiType === 'Art') {
-    ArtApiFunc()
+    artApiFunc()
   } else if (apiType === 'Books') {
     booksApiFunc()
   } else {
