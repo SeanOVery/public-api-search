@@ -457,8 +457,36 @@ const foodApiFunc = () => {
       console.log(data)
       searchData = data
     apiCall.innerHTML = `
+      <h1>Example Api Call</h1>   
+        <div class="ui grid">
+        <div class="four wide column left floated centered">
+          <div class="ui medium image">
+            <img src= ${searchData[0].image_url}>
+          </div>
+        </div>
+        <div class="ten wide column">
+        <table class="ui attached inverted table center aligned">
+          <thead>
+            <th>${searchData[0].name}</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ABV Content -  ${searchData[0].abv}% </td>
+            </tr>
+            <tr>
+              <td>First Brewed - ${searchData[0].first_brewed} </td>
+            </tr>
+              <td>Volume - ${searchData[0].volume} </td>
+            <tr>
+              <td>Some Characters: </td>
+            </tr>
+          </tbody>
+        </table> 
+        </div>
+        </div>
     `
     results.innerHTML = `
+
     `
     })
     .catch((error) => {
@@ -480,7 +508,8 @@ const foodApiFunc = () => {
     .then(data => {
       console.log(data)
       searchData = data
-    apiCall.innerHTML = `<h1> Example API Call<h1>
+    apiCall.innerHTML = `
+    <h1> Example API Call<h1>
     <div class="ui medium image">
     <img src= ${searchData.file}>
     </div>
