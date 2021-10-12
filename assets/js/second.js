@@ -443,8 +443,8 @@ const foodApiFunc = () => {
       ;
     })
 
-  } else if (apiToFetch === 'openFoodFacts') {
-    callUrl = 'https://world.openfoodfacts.org/api/v0/product/737628064502.json'
+  } else if (apiToFetch === 'punkAPI') {
+    callUrl = 'https://api.punkapi.com/v2/beers/random'
     fetch(callUrl)
     .then(response => {
       if (response.status === 200) {
@@ -468,7 +468,7 @@ const foodApiFunc = () => {
       ;
     })
   } else if (apiToFetch === 'coffee') {
-    callUrl = 'https://coffee.alexflipnote.dev/'
+    callUrl = 'https://cors-anywhere.herokuapp.com/https://coffee.alexflipnote.dev/random.json'
     fetch(callUrl)
     .then(response => {
       if (response.status === 200) {
@@ -480,8 +480,26 @@ const foodApiFunc = () => {
     .then(data => {
       console.log(data)
       searchData = data
-    apiCall.innerHTML = ``
-    results.innerHTML = ``
+    apiCall.innerHTML = `<h1> Example API Call<h1>
+    <div class="ui medium image">
+    <img src= ${searchData.file}>
+    </div>
+    `
+    results.innerHTML = `
+    <div class="ui top attached inverted segment center aligned">
+        Types of Information/Resources gathered from Coffee
+      </div>
+      <table class="ui attached inverted table center aligned">
+        <thead>
+          <th>Coffee Random Image Search</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 random coffee image is returned</td>
+          </tr>
+        </tbody>
+      </table>
+    `
 
     })
     .catch((error) => {
